@@ -1,4 +1,0 @@
-require "mybookings_adobe_connect_extension/engine"
-
-module MybookingsAdobeConnectExtension
-end
