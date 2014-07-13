@@ -1,0 +1,7 @@
+en:
+  adobe_connect_extension_bookings:
+    edit_participants:
+      participants_hint: 'Introduce emails separated by comma.'
+      save: 'Save participants'
+      title: 'Adobe Connect meeting participants'
+  participants: 'Participants'

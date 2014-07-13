@@ -1,0 +1,6 @@
+= title
+
+= simple_form_for @adobe_connect_extension_booking, url: adobe_connect_extension_booking_update_participants_path(@adobe_connect_extension_booking) do |f|
+  = f.input :participants, input_html: { rows: 10 }, hint: t('.participants_hint')
+
+  = f.button icon_with_text('ok', t('.save')), class: 'btn btn-primary'

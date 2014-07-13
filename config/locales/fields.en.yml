@@ -1,0 +1,5 @@
+en:
+  activerecord:
+    attributes:
+      adobe_connect_extension_booking:
+        participants: 'Participants'
