@@ -1,3 +1,4 @@
+require 'resource_types_extensions/adobe_connect_extension/engine'
 require 'adobe_connect'
 
 module ResourceTypesExtensions

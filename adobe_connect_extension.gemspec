@@ -12,8 +12,8 @@ Gem::Specification.new do |s|
   s.description = 'TODO: Description of AdobeConnectExtension.'
   s.license     = 'TODO'
 
-  s.files = Dir['{lib,config}/**/*']
+  s.files = Dir["{app,config,db,lib}/**/*", "Rakefile"]
 
   s.add_dependency 'rails', '~> 4.1.4'
-  s.add_runtime_dependency 'adobe_connect'
+  s.add_dependency 'adobe_connect'
 end
