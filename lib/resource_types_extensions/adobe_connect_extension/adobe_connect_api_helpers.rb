@@ -36,7 +36,7 @@ class ResourceTypesExtensions::AdobeConnectExtension::AdobeConnectAPIHelpers
   end
 
   def self.set_meeting_participants adobe_connect_extension_booking, adobe_connect_service
-    meeting = AdobeConnect::Meeting.find_by_id(adobe_connect_extension_booking.meeting_id, @adobe_connect_service)
+    meeting = AdobeConnect::Meeting.find_by_id(adobe_connect_extension_booking.meeting_id, adobe_connect_service)
 
     emails = adobe_connect_extension_booking.participants.split(',')
     emails.each do |email|
