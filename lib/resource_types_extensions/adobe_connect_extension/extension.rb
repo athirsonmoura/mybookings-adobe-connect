@@ -42,7 +42,7 @@ class ResourceTypesExtensions::AdobeConnectExtension::Extension < ResourceTypesE
 
   private
 
-  def load_adobe_connect_service
+  def self.load_adobe_connect_service
     @adobe_connect_service = ResourceTypesExtensions::AdobeConnectExtension::AdobeConnectSingleton.instance
   end
 
