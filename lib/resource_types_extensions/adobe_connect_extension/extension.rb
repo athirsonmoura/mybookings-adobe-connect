@@ -12,11 +12,13 @@ class ResourceTypesExtensions::AdobeConnectExtension::Extension < ResourceTypesE
   def self.on_booking_start booking
     load_adobe_connect_service
 
-    adobe_connect_user = AdobeConnect::User.find({ email: booking.user_email })
-    meeting = ResourceTypesExtensions::AdobeConnectExtension::AdobeConnectAPIHelpers.create_meeting(booking.resource_name, adobe_connect_user, @adobe_connect_service)
+    adobe_connect_host_user = AdobeConnect::User.find({ email: ENV['ADOBECONNECT_USERNAME'] })
+    meeting = ResourceTypesExtensions::AdobeConnectExtension::AdobeConnectAPIHelpers.create_meeting(booking.resource_name, adobe_connect_host_user, @adobe_connect_service)
 
     adobe_connect_extension_booking = AdobeConnectExtensionBooking.find_by_booking_id(booking)
     adobe_connect_extension_booking.update_attribute(:meeting_id, meeting.id)
+
+    ResourceTypesExtensions::AdobeConnectExtension::AdobeConnectAPIHelpers.set_meeting_presenter(adobe_connect_extension_booking, @adobe_connect_service)
 
     unless adobe_connect_extension_booking.participants.nil?
       ResourceTypesExtensions::AdobeConnectExtension::AdobeConnectAPIHelpers.set_meeting_participants(adobe_connect_extension_booking, @adobe_connect_service)

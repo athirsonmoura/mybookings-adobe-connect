@@ -35,6 +35,16 @@ class ResourceTypesExtensions::AdobeConnectExtension::AdobeConnectAPIHelpers
     emails.map { |email| ResourceTypesExtensions::AdobeConnectExtension::AdobeConnectAPIHelpers.create_user_if_not_exists(email, adobe_connect_service) }
   end
 
+  def self.set_meeting_presenter adobe_connect_extension_booking, adobe_connect_service
+    meeting = AdobeConnect::Meeting.find_by_id(adobe_connect_extension_booking.meeting_id, adobe_connect_service)
+
+    booking = adobe_connect_extension_booking.booking
+    email = booking.user_email
+
+    adobe_connect_user = AdobeConnect::User.find({ email: email })
+    meeting.add_presenter(adobe_connect_user.id)
+  end
+
   def self.set_meeting_participants adobe_connect_extension_booking, adobe_connect_service
     meeting = AdobeConnect::Meeting.find_by_id(adobe_connect_extension_booking.meeting_id, adobe_connect_service)
 
