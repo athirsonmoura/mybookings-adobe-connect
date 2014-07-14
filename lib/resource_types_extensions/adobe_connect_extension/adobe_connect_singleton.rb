@@ -8,7 +8,7 @@ class ResourceTypesExtensions::AdobeConnectExtension::AdobeConnectSingleton
 
   def self.instance
     @@conn ||= AdobeConnect::Service.new
-    @@conn.log_in unless @@conn.authenticated?
+    @@conn.log_in
     @@conn
   end
 
