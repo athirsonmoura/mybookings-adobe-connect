@@ -1,0 +1,3 @@
+en:
+  errors:
+    invalid_email_list: 'La lista de emails es incorrecta.'
