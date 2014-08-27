@@ -34,12 +34,14 @@ class ResourceTypesExtensions::AdobeConnectExtension::Extension < ResourceTypesE
   end
 
   def self.actions_for booking
-    specific_actions = []
+    actions = []
 
-    adobe_connect_extension_booking = AdobeConnectExtensionBooking.find_by_booking_id(booking)
-    specific_actions.push({ icon: 'user', text: I18n.t('.participants'), path: Rails.application.routes.url_helpers.adobe_connect_extension_booking_edit_participants_path(adobe_connect_extension_booking) })
+    if booking.pending?
+      adobe_connect_extension_booking = AdobeConnectExtensionBooking.find_by_booking_id(booking)
+      actions.push({ icon: 'user', text: I18n.t('.participants'), path: Rails.application.routes.url_helpers.adobe_connect_extension_booking_edit_participants_path(adobe_connect_extension_booking) })
+    end
 
-    specific_actions
+    actions
   end
 
   private
