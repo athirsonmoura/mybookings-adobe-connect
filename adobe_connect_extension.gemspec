@@ -1,6 +1,6 @@
 $:.push File.expand_path('../lib', __FILE__)
 
-require 'resource_types_extensions/adobe_connect_extension/version'
+require 'adobe_connect_extension/version'
 
 Gem::Specification.new do |s|
   s.name        = 'adobe_connect_extension'

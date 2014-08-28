@@ -1,3 +1,5 @@
+require 'adobe_connect_api_helpers'
+
 class AdobeConnectExtensionBookingsController < BaseController
 
   before_action :load_adobe_connect_extension_booking, only: [:edit_participants, :update_participants]
@@ -6,9 +8,10 @@ class AdobeConnectExtensionBookingsController < BaseController
   def edit_participants; end
 
   def update_participants
-    return render 'edit_participants' unless @adobe_connect_extension_booking.update_participants(adobe_connect_extension_booking_params[:participants])
+    participants = adobe_connect_extension_booking_params[:participants]
+    return render 'edit_participants' unless @adobe_connect_extension_booking.update_participants(participants)
 
-    ResourceTypesExtensions::AdobeConnectExtension::AdobeConnectAPIHelpers.provision_participants_for(@adobe_connect_extension_booking)
+    AdobeConnectAPIHelpers.provision_participants_for(@adobe_connect_extension_booking)
     return redirect_to bookings_path
   end
 

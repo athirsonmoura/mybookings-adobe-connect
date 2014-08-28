@@ -1,5 +1,6 @@
 module ResourceTypesExtensions
   module AdobeConnectExtension
+
     class Engine < ::Rails::Engine
 
       initializer :append_migrations do |app|
@@ -11,5 +12,6 @@ module ResourceTypesExtensions
       end
 
     end
+
   end
 end

@@ -1,4 +1,4 @@
-class ResourceTypesExtensions::AdobeConnectExtension::AdobeConnectSingleton
+class AdobeConnectSingleton
 
   AdobeConnect::Config.declare do
     username ENV['ADOBECONNECT_USERNAME']
