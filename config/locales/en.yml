@@ -4,4 +4,5 @@ en:
       participants_hint: 'Introduce emails separated by comma.'
       save: 'Save participants'
       title: 'Adobe Connect meeting participants'
+  open_meeting: 'Go to meeting'
   participants: 'Participants'

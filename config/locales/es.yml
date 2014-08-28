@@ -4,4 +4,5 @@ es:
       participants_hint: 'Introduce los emails separados por comas.'
       save: 'Guardar participantes'
       title: 'Participantes de la reunión de Adobe Connect'
+  open_meeting: 'Ir a la reunión'
   participants: 'Participantes'

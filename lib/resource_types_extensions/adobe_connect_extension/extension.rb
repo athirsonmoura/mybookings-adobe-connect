@@ -34,11 +34,28 @@ class ResourceTypesExtensions::AdobeConnectExtension::Extension < ResourceTypesE
   end
 
   def self.actions_for booking
+    load_adobe_connect_service
+
     actions = []
 
+    adobe_connect_extension_booking = AdobeConnectExtensionBooking.find_by_booking_id(booking)
+
     if booking.pending?
-      adobe_connect_extension_booking = AdobeConnectExtensionBooking.find_by_booking_id(booking)
-      actions.push({ icon: 'user', text: I18n.t('.participants'), path: Rails.application.routes.url_helpers.adobe_connect_extension_booking_edit_participants_path(adobe_connect_extension_booking) })
+      actions.push({
+        icon: 'user',
+        text: I18n.t('.participants'),
+        path: Rails.application.routes.url_helpers.adobe_connect_extension_booking_edit_participants_path(adobe_connect_extension_booking)
+      })
+    end
+
+    if booking.occurring?
+      meeting = AdobeConnect::Meeting.find_by_id(adobe_connect_extension_booking.meeting_id, @adobe_connect_service)
+      actions.push({
+        icon: 'link',
+        text: I18n.t('.open_meeting'),
+        path: "#{ENV['ADOBECONNECT_DOMAIN']}#{meeting.url_path}",
+        target: '_blank'
+      })
     end
 
     actions
