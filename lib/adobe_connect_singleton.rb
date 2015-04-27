@@ -1,9 +1,9 @@
 class AdobeConnectSingleton
 
   AdobeConnect::Config.declare do
-    username ENV['ADOBECONNECT_USERNAME']
-    password ENV['ADOBECONNECT_PASSWORD']
-    domain   ENV['ADOBECONNECT_DOMAIN']
+    username Rails.application.secrets.adobeconnect_username
+    password Rails.application.secrets.adobeconnect_password
+    domain   Rails.application.secrets.adobeconnect_domain
   end
 
   def self.instance

@@ -9,7 +9,7 @@ module ResourceTypesExtensions
       end
 
       def self.on_booking_start booking
-        adobe_connect_host_user = AdobeConnect::User.find({ email: ENV['ADOBECONNECT_USERNAME'] }, AdobeConnectSingleton.instance)
+        adobe_connect_host_user = AdobeConnect::User.find({ email: Rails.application.secrets.adobeconnect_username }, AdobeConnectSingleton.instance)
         meeting = AdobeConnectAPIHelpers.create_meeting(booking.resource_name, adobe_connect_host_user)
 
         adobe_connect_extension_booking = AdobeConnectExtensionBooking.find_by_booking_id(booking)
@@ -48,7 +48,7 @@ module ResourceTypesExtensions
           actions.push({
             icon: 'link',
             text: I18n.t('.open_meeting'),
-            path: "#{ENV['ADOBECONNECT_DOMAIN']}#{meeting.url_path}",
+            path: "#{Rails.application.secrets.adobeconnect_domain}#{meeting.url_path}",
             target: '_blank'
           })
         end
