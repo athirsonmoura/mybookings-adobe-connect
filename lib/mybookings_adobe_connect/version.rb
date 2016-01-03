@@ -1,7 +1,5 @@
 module ResourceTypesExtensions
-  module AdobeConnectExtension
-
+  module MyBookingsAdobeConnect
     VERSION = "1.0.0"
-
   end
 end

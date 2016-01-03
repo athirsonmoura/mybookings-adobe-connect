@@ -1,5 +1,5 @@
 module ResourceTypesExtensions
-  module AdobeConnectExtension 
+  module MyBookingsAdobeConnect
 
     class Extension < ResourceTypesExtensions::BaseExtension
 
